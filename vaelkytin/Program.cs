@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSGSI;
 using CSGSI.Nodes;
@@ -19,8 +18,8 @@ namespace vaelkytin
         public static HealthBars healthBars = new HealthBars();
         public static List<PlayerNode> nodeList = new List<PlayerNode>();
         public static ArtNetSocket artNet;
-
         private static Form1 barForm;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
