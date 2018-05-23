@@ -17,9 +17,9 @@ namespace vaelkytin
         {
             SetStripId(idx, id);
         }
-        public void SetHealth(int idx, int percent)
+        public void SetHealth(int idx, int percent, int  flashed)
         {
-            Strips[idx].SetStripToTwoColorsByPercent(percent, 255, 0, 0, 0, 255, 0);
+            Strips[idx].SetStripToTwoColorsByPercentAndFlashed(percent, 255, 0, 0, 0, 255, 0, (byte)flashed);
         }
         public void Reset()
         {

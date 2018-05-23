@@ -82,7 +82,7 @@ namespace vaelkytin
                 int index = healthBars.GetHealthIndexBarById(nodeList[i].SteamID);
                 if (index > -1)
                 {
-                    healthBars.SetHealth(index, Math.Min(nodeList[i].State.Health, 100));
+                    healthBars.SetHealth(index, Math.Min(nodeList[i].State.Health, 100),nodeList[i].State.Flashed);
                 }
             }
         }

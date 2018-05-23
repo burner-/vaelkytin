@@ -14,7 +14,6 @@ namespace vaelkytin
         public RGBPixel[] GetPixels { get { return pixels; } }
         public string id;
         private byte rainbowTock = 0;
-        private bool rainbowDir = false;
 
         public PixelStrip()
         {
@@ -40,7 +39,6 @@ namespace vaelkytin
         {
             id = "";
             rainbowTock = 0;
-            rainbowDir = false;
             for (int i = 0; i < 100; i++)
             {
                 SetStripToColor(13, 13, 13);
@@ -159,17 +157,25 @@ namespace vaelkytin
             }
         }
 
-        public void SetStripToTwoColorsByPercent(int percent, byte r1, byte g1, byte b1, byte r2, byte g2, byte b2)
+        public void SetStripToTwoColorsByPercentAndFlashed(int percent, byte r1, byte g1, byte b1, byte r2, byte g2, byte b2, byte flashed = 0)
         {
-            int numToColor1 = pixels.Length / 100 * (100-percent);
+            UInt32 color1 = Color(Math.Max(flashed, r1), Math.Max(flashed, g1), Math.Max(flashed, b1));
+            UInt32 color2 = Color(Math.Max(flashed, r2), Math.Max(flashed, g2), Math.Max(flashed, b2));
+            SetStripToTwoColorsByPercent(percent, color1, color2);
+        }
+
+        public void SetStripToTwoColorsByPercent(int percent, UInt32 color1, UInt32 color2)
+        {
+            int numToColor1 = pixels.Length / 100 * (100 - percent);
             for (int i = 0; i < numToColor1; i++)
             {
-                SetPixel(i,r1, g1, b1);
+                SetPixel(i, color1);
             }
             for (int i = numToColor1; i < pixels.Length; i++)
             {
-                SetPixel(i, r2, g2, b2);
+                SetPixel(i, color2);
             }
         }
+
     }
 }

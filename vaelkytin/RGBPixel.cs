@@ -21,21 +21,21 @@ namespace vaelkytin
         }
 
         // Returns the Red component of a 32-bit color
-        byte RedC(UInt32 color)
+        public byte RedC(UInt32 color)
         {
             return (byte)((color >> 16) & 0xFF);
         }
 
         // Returns the Green component of a 32-bit color
-        byte GreenC(UInt32 color)
+        public byte GreenC(UInt32 color)
         {
-            return (byte)(color & 0xFF);
+            return (byte)((color >> 8)& 0xFF);
         }
 
         // Returns the Blue component of a 32-bit color
-        byte BlueC(UInt32 color)
+        public byte BlueC(UInt32 color)
         {
-            return (byte)((color >> 8) & 0xFF);
+            return (byte)(color & 0xFF);
         }
 
         public byte Red { get => color[0]; set => color[0] = value; }
