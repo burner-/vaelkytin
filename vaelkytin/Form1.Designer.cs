@@ -35,14 +35,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(198, 401);
+            this.ClientSize = new System.Drawing.Size(214, 440);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(214, 440);
+            this.MaximumSize = new System.Drawing.Size(65535, 65535);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(214, 440);
+            this.MinimumSize = new System.Drawing.Size(10, 100);
             this.Name = "Form1";
             this.Text = "vaelkytin";
             this.ResumeLayout(false);

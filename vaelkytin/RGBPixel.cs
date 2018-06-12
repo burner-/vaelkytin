@@ -2,10 +2,12 @@
 
 namespace vaelkytin
 {
+    [Serializable]
     class RGBPixel
     {
         private byte[] color;
 
+        [Newtonsoft.Json.JsonIgnore]
         public byte[] GetBytes { get { return color; } }
 
         public RGBPixel(byte red, byte green, byte blue)

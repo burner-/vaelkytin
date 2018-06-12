@@ -24,23 +24,72 @@ namespace vaelkytin
             updateTimer.Interval = 12;
             updateTimer.Tick += new System.EventHandler(Update);
             updateTimer.Start();
-            artNetTimer.Interval = 90; // DMX can't handle faster than 90ms
-            artNetTimer.Tick += new System.EventHandler(ArtNetUpdate);
-            artNetTimer.Start();
+            if (Program.config.ArtNetEnabled)
+            {
+                artNetTimer.Interval = 90; // DMX can't handle faster than 90ms
+                artNetTimer.Tick += new System.EventHandler(ArtNetUpdate);
+                artNetTimer.Start();
+            }
+        }
+
+        public void SetToScreen(int screenNumber)
+        {
+            Screen[] screens = Screen.AllScreens;
+
+            if (screenNumber >= 0 && screenNumber < screens.Length)
+            {
+                bool maximised = false;
+                if (WindowState == FormWindowState.Maximized)
+                {
+                    WindowState = FormWindowState.Normal;
+                    maximised = true;
+                }
+                Location = screens[screenNumber].WorkingArea.Location;
+                if (maximised)
+                {
+                    WindowState = FormWindowState.Maximized;
+                }
+            }
+        }
+
+        public void SetAlwaysOnTop()
+        {
+            TopMost = true;
+        }
+
+        public void UnSetAlwaysOnTop()
+        {
+            TopMost = false;
+        }
+
+        public void EnterFullScreenMode()
+        {
+            WindowState = FormWindowState.Normal;
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
+        }
+
+        public void LeaveFullScreenMode()
+        {
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            WindowState = FormWindowState.Normal;
         }
 
         private void ArtNetUpdate(object sender, EventArgs e)
         {
-            for (short i = 0; i < Program.healthBars.Count; i++)
+            if (Program.config.ArtNetEnabled)
             {
-                ArtNetDmxPacket packet = new ArtNetDmxPacket();
-                packet.Universe = (short)i;
-                byte[] stripBytes = Program.healthBars.GetStrip(i).GetAsBytes();
-                packet.DmxData = new byte[stripBytes.Length];
-                if (stripBytes.Length > 0)
+                for (short i = 0; i < Program.healthBars.Count; i++)
                 {
-                    Buffer.BlockCopy(stripBytes, 0, packet.DmxData, 0, stripBytes.Length);
-                    Program.artNet.Send(packet);
+                    ArtNetDmxPacket packet = new ArtNetDmxPacket();
+                    packet.Universe = (short)i;
+                    byte[] stripBytes = Program.healthBars.GetStrip(i).GetAsBytes();
+                    packet.DmxData = new byte[stripBytes.Length];
+                    if (stripBytes.Length > 0)
+                    {
+                        Buffer.BlockCopy(stripBytes, 0, packet.DmxData, 0, stripBytes.Length);
+                        Program.artNet.Send(packet);
+                    }
                 }
             }
         }
@@ -70,7 +119,7 @@ namespace vaelkytin
                 {
                     
                     System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(Color.FromArgb(pixels[j].Red, pixels[j].Green, pixels[j].Blue));
-                    e.Graphics.FillRectangle(myBrush, new Rectangle(2+(20*i), j*4, 14, 4));
+                    e.Graphics.FillRectangle(myBrush, new Rectangle(i, j, 1, 1));
                     myBrush.Dispose();
                 }
             }
