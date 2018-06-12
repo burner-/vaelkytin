@@ -1,7 +1,9 @@
 # vaelkytin
 Sceptron Flasher aka. CS:GO Game State Integration to Art-Net translator
 
-Created for Vectorama 2018, work-in-progress.
+![Vectorama 2018 Asus ROG CS:GO](http://gallery.vectorama.info/?t=Big&f=Vectorama+2018%2F9.6.2018+Lauantai%2FAtte+Haapalahti%2Fvectorama_la-33.jpg)
+
+First real-world use at Vectorama 2018.
 
 This tool takes player health information and flashed status from CS:GO Game State Integration and translates it to pixel strips for use with VDO Sceptron 10 (1000mm) and their accompanying P3-050 controller.
 
