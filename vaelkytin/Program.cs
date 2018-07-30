@@ -19,6 +19,7 @@ namespace vaelkytin
         public static HealthBars healthBars = new HealthBars();
         public static List<PlayerNode> nodeList = new List<PlayerNode>();
         public static ArtNetSocket artNet;
+        public static int onscreen = 0;
 
         private static Form1 barForm;
         /// <summary>
@@ -39,16 +40,22 @@ namespace vaelkytin
             Application.SetCompatibleTextRenderingDefault(false);
             barForm = new Form1();
             barForm.Show();
+            SetBarsToScreen(onscreen);
             Application.Run(new ConfigurationForm());
             
         }
 
+        public static void SetBarsToScreen(int screen)
+        {
+            barForm.SetToScreen(screen);
+        }
+
         static void InitializeArtNet()
         {
-            artNet = new ArtNetSocket();
+            /*artNet = new ArtNetSocket();
             artNet.EnableBroadcast = true;
             Debug.WriteLine(artNet.BroadcastAddress);
-            artNet.Open(IPAddress.Parse("192.168.1.74"), IPAddress.Parse("255.255.255.0"));
+            artNet.Open(IPAddress.Parse("192.168.1.5"), IPAddress.Parse("255.255.255.0"));*/
         }
 
         public static void SendPacketOverArtNet()
@@ -70,7 +77,7 @@ namespace vaelkytin
 
         static void OnProcessExit(object sender, EventArgs e)
         {
-            artNet.Close();
+            //artNet.Close();
             gsl.Stop();
         }
 

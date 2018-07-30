@@ -21,13 +21,24 @@ namespace vaelkytin
         public Form1()
         {
             InitializeComponent();
+
             updateTimer.Interval = 12;
             updateTimer.Tick += new System.EventHandler(Update);
             updateTimer.Start();
-            artNetTimer.Interval = 90; // DMX can't handle faster than 90ms
+            /*artNetTimer.Interval = 90; // DMX can't handle faster than 90ms
             artNetTimer.Tick += new System.EventHandler(ArtNetUpdate);
-            artNetTimer.Start();
+            artNetTimer.Start();*/
+            //SetToScreen(0);
         }
+
+        public void SetToScreen(int screen)
+        {
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Bounds = Screen.AllScreens[screen].Bounds;
+            this.Location = Screen.AllScreens[screen].WorkingArea.Location;
+            this.WindowState = FormWindowState.Maximized;
+        }
+
 
         private void ArtNetUpdate(object sender, EventArgs e)
         {
@@ -70,7 +81,7 @@ namespace vaelkytin
                 {
                     
                     System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(Color.FromArgb(pixels[j].Red, pixels[j].Green, pixels[j].Blue));
-                    e.Graphics.FillRectangle(myBrush, new Rectangle(2+(20*i), j*4, 14, 4));
+                    e.Graphics.FillRectangle(myBrush, new Rectangle(i, 1+j, 1, 1));
                     myBrush.Dispose();
                 }
             }

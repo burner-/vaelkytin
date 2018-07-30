@@ -19,7 +19,14 @@ namespace vaelkytin
         }
         public void SetHealth(int idx, int percent, int  flashed)
         {
-            Strips[idx].SetStripToTwoColorsByPercentAndFlashed(percent, 255, 0, 0, 0, 255, 0, (byte)flashed);
+            if (percent == 0)
+            {
+                Strips[idx].SetStripToTwoColorsByPercentAndFlashed(percent, 255, 0, 0, 253, 165, 15, 0);
+            }
+            else
+            {
+                Strips[idx].SetStripToTwoColorsByPercentAndFlashed(percent, 0, 0, 0, 253, 165, 15, (byte)flashed);
+            }
         }
         public void Reset()
         {
