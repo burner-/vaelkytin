@@ -193,9 +193,9 @@ namespace vaelkytin
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Program.onscreen++;
-            if (Program.onscreen > 1) Program.onscreen = 0;
-            Program.SetBarsToScreen(Program.onscreen);
+            Program.config.DefaultScreen++;
+            if (Program.config.DefaultScreen > Screen.AllScreens.Length) Program.config.DefaultScreen = 0;
+            Program.SetBarsToScreen(Program.config.DefaultScreen);
         }
     }
 }

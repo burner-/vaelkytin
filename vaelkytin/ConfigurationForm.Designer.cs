@@ -436,7 +436,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(298, 44);
             this.button3.TabIndex = 36;
-            this.button3.Text = "Set to second screen";
+            this.button3.Text = "Change screen";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 

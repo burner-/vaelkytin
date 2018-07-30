@@ -105,7 +105,7 @@ namespace vaelkytin
             config.Save();
             if (artNet != null)
             {
-                ¨//artNet.Close();
+                artNet.Close();
             }
             gsl.Stop();
         }
