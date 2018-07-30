@@ -444,7 +444,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1534, 377);
+            this.ClientSize = new System.Drawing.Size(1534, 429);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label12);
@@ -485,9 +485,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1560, 448);
+            this.MaximumSize = new System.Drawing.Size(1560, 500);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1560, 448);
+            this.MinimumSize = new System.Drawing.Size(1560, 500);
             this.Name = "ConfigurationForm";
             this.Text = "vaelkytin-conf";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConfigurationForm_FormClosed);
