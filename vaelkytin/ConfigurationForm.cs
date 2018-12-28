@@ -190,5 +190,12 @@ namespace vaelkytin
             Program.gsl.Stop();
             Application.Exit();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Program.config.DefaultScreen++;
+            if (Program.config.DefaultScreen > Screen.AllScreens.Length) Program.config.DefaultScreen = 0;
+            Program.SetBarsToScreen(Program.config.DefaultScreen);
+        }
     }
 }

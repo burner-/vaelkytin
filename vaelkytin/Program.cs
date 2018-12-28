@@ -66,12 +66,18 @@ namespace vaelkytin
             
         }
 
+        public static void SetBarsToScreen(int screen)
+        {
+            barForm.SetToScreen(screen);
+        }
+
         static void InitializeArtNet()
         {
-            artNet = new ArtNetSocket();
+            /*artNet = new ArtNetSocket();
             artNet.EnableBroadcast = true;
             Debug.WriteLine(artNet.BroadcastAddress);
-            artNet.Open(IPAddress.Parse(config.ArtNetIP), IPAddress.Parse(config.ArtNetMask));
+            artNet.Open(IPAddress.Parse(config.ArtNetIP), IPAddress.Parse(config.ArtNetMask));*/
+
         }
 
         public static void SendPacketOverArtNet()
